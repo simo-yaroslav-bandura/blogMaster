@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eee;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 300;
+}
+
+header {
+    background: #222;
+    padding: 20px 100px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+header nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: all 500ms ease;
+}
+
+header nav a.btn {
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+
+header nav a:hover {
+    color: #a1a1a1;
+
+}
+
+header nav a.btn:hover {
+    border-color: #de7474;
+}
+
+footer {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background: #222;
+    padding: 30px;
+    color: #eeeeee;
+    margin-top: 100px;
+}
+
+main{
+    float: left;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 50%;
+}
+
+aside{
+    float: right;
+    margin-top: 50px;
+    margin-right: 100px;
+    width: 500px;
+}
+
+aside .info{
+    background: #ffc007;
+    color: #42410c;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    line-height: 140%;
+    border-radius: 5px;
+}
+
+aside .info h2{
+    margin-bottom: 10px;
+}
+
+aside img{
+    width: 100%;
+    border: 5px solid #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+form{
+    margin: 30px 0;
+}
+form label{
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+form input, form textarea{
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+form button{
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fec008;
+    color: #42410c;
+    transition: transform 500ms ease;
+}
+
+form button:hover ,
+.post a:hover{
+    transform: scale(1.1);
+}
+
+.error-message{
+    color: red;
+    margin: 10px 0;
+    font-weight: 600;
+    display: none;
+}
+
+.post {
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.post h2{
+    margin-bottom: 10px ;
+}
+
+.post .author{
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.post .author span{
+    background: #edd853;
+    padding: 2px 7px;
+    font-weight: 425;
+    border-radius: 5px;
+}
+.post a{
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    width: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #fec008;
+    color: #42410c;
+    transition: transition 500ms ease;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ebd652;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #42410c;
+    margin-bottom: 30px;
+}
+.comment h3{
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.comment .mess_text{
+    margin-top: 10px;
+    font-weight: 450;
+    padding: 15px;
+    font-size: 20px;
+    background: #bcd4f8;
+    border:3px solid black;
+    border-radius: 5px;
+    height: 70px;
+}
+
+.comment .date{
+    width: 70px;
+    align-self: flex-end;
+    margin-right: 20px;
+    font-weight: 600;
+}
+.form_message{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.form_message a{
+    text-decoration: none;
+    font-weight: 550;
+    color: #222222;
+}
+.comment-fail{
+    border: 3px solid darkred;
+    border-radius: 10px;
+    padding: 10px;
+}
+.comment-fail h3{
+    margin-bottom: 10px;
+    font-weight: 300;
+    color: darkred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
