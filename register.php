@@ -7,27 +7,30 @@
 <body>
 <?php require 'blocks/header.php'; ?>
 
-<main class="main">
-    <h1>Регестрация</h1>
-    <form>
-        <label for="username">Your name</label>
-        <input type="text" name="username" id="username">
+<div class="container">
+    <div class="row g-4">
+        <main class="col-12 col-md-8 col-lg-9">
+            <h1>Регестрация</h1>
+            <form>
+                <label for="username">Your name</label>
+                <input type="text" name="username" id="username">
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
 
-        <label for="login">Login</label>
-        <input type="text" name="login" id="login">
+                <label for="login">Login</label>
+                <input type="text" name="login" id="login">
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
 
-        <div class="error-message" id="error-block"></div>
-        <button type="button" id="reg_user">Registration</button>
-    </form>
-</main>
-
-<?php require 'blocks/aside.php'; ?>
+                <div class="error-message" id="error-block"></div>
+                <button type="button" id="reg_user">Registration</button>
+            </form>
+        </main>
+        <?php require 'blocks/aside.php'; ?>
+    </div>
+</div>
 <?php require 'blocks/footer.php'; ?>
 <script>
     $('#reg_user').click(function () {

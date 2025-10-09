@@ -1,8 +1,8 @@
-FROM php:8.2-apache
+FROM dunglas/frankenphp:latest
 
+RUN install-php-extensions \
+    pdo_mysql \
+    mysqli \
+    xdebug
 
-RUN docker-php-ext-install pdo_mysql
-
-RUN a2enmod rewrite
-
-WORKDIR /var/www/html
+COPY Caddyfile /etc/frankenphp/Caddyfile

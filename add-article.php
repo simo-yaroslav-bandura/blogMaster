@@ -13,24 +13,30 @@ if (!isset($_COOKIE['login'])) {
 <body>
 <?php require 'blocks/header.php'; ?>
 
-<main class="main">
-    <h1>Add article</h1>
-    <form>
-        <label for="title">Title article</label>
-        <input name="title" id="title">
+<div class="container">
+    <div class="row g-4">
 
-        <label for="anons">Anons article </label>
-        <textarea name="anons" id="anons"></textarea>
+        <main class="col-12 col-md-8 col-lg-9">
+            <h1>Add article</h1>
+            <form>
+                <label for="title">Title article</label>
+                <input name="title" id="title">
 
-        <label for="full_text">Main text</label>
-        <textarea name="full_text" id="full_text"></textarea>
+                <label for="anons">Anons article </label>
+                <textarea name="anons" id="anons"></textarea>
 
-        <div class="error-message" id="error-block"></div>
-        <button type="button" id="add_article">Post</button>
-    </form>
-</main>
+                <label for="full_text">Main text</label>
+                <textarea name="full_text" id="full_text" rows="12" wrap="soft"></textarea>
 
-<?php require 'blocks/aside.php'; ?>
+                <div class="error-message" id="error-block"></div>
+                <button type="button" id="add_article">Post</button>
+            </form>
+        </main>
+        <?php require 'blocks/aside.php'; ?>
+    </div>
+</div>
+
+
 <?php require 'blocks/footer.php'; ?>
 <script>
     $('#add_article').click(function () {

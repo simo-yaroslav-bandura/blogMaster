@@ -1,26 +1,28 @@
-version: "3.9"
 services:
-  db: # <-- имя сервиса БД (используй его как host в PHP)docker compose up -d --build
+  db:
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: web-log          # сразу создаст БД
-      MYSQL_ROOT_HOST: "%"             # разрешит root не только с localhost
+      MYSQL_DATABASE: web-log
+      MYSQL_ROOT_HOST: "%"
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
 
-
-  php-apache:
-    container_name: firstwebsite_php-apache_1
+  php:
     build: ./php
+    restart: always
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
+      SERVER_NAME: simo-blog.test:80
     ports:
-      - "8080:80"
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./:/var/www/html
-    depends_on:
-      - db
+      - .:/app
+    tty: true
 
 volumes:
-  db_data: {}
+  db_data:

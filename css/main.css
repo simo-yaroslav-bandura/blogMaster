@@ -12,12 +12,13 @@ body {
 }
 
 header {
-    background: #222;
+    background: url("../img/nav.gif") center/cover no-repeat;
     padding: 20px 100px;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100px;
 }
 
 header .logo {
@@ -35,6 +36,7 @@ header nav a {
 }
 
 header nav a.btn {
+    color: #c2c0c0;
     padding: 5px;
     border: 1px solid silver;
     border-radius: 5px;
@@ -50,31 +52,27 @@ header nav a.btn:hover {
 }
 
 footer {
-    float: left;
-    width: 100%;
-    box-sizing: border-box;
+    background: url("../img/navig.gif") center/cover no-repeat;
+    color: #d8d3d3;
+    font-weight: 400;
     text-align: center;
-    background: #222;
-    padding: 30px;
-    color: #eeeeee;
-    margin-top: 100px;
+    padding: 30px 0;
+    margin: 100px 0 0;
+    box-sizing: border-box;
+    display: block;
+    height: 100px;
 }
 
-main{
-    float: left;
+
+main {
     margin-top: 50px;
-    margin-left: 100px;
-    width: 50%;
 }
 
-aside{
-    float: right;
+aside {
     margin-top: 50px;
-    margin-right: 100px;
-    width: 500px;
 }
 
-aside .info{
+aside .info {
     background: #ffc007;
     color: #42410c;
     width: 100%;
@@ -82,13 +80,14 @@ aside .info{
     box-sizing: border-box;
     line-height: 140%;
     border-radius: 5px;
+    margin-top: 30px;
 }
 
-aside .info h2{
+aside .info h2 {
     margin-bottom: 10px;
 }
 
-aside img{
+aside img {
     width: 100%;
     border: 5px solid #fff;
     box-sizing: border-box;
@@ -96,17 +95,41 @@ aside img{
     margin-top: 30px;
 }
 
-form{
+form {
     margin: 30px 0;
 }
-form label{
+
+form label {
     display: block;
     width: 100%;
     margin-bottom: 5px;
     cursor: pointer;
 }
 
-form input, form textarea{
+.post {
+    border: 2px solid #000000;
+    border-radius: 5px;
+}
+
+.post h2 {
+    font-weight: 600;
+}
+
+.post .anons {
+    font-weight: 700;
+}
+
+.post p {
+    font-weight: 400;
+}
+.post .author span{
+    background: #edd853;
+    padding: 2px 7px;
+    font-weight: 425;
+    border-radius: 5px;
+}
+
+form input, form textarea {
     width: 100%;
     resize: vertical;
     border: 1px solid #ddd;
@@ -117,7 +140,7 @@ form input, form textarea{
     font-family: 'Montserrat', 'sans-serif';
 }
 
-form button{
+form button {
     border: 0;
     padding: 10px 20px;
     border-radius: 5px;
@@ -127,53 +150,68 @@ form button{
     transition: transform 500ms ease;
 }
 
-form button:hover ,
-.post a:hover{
-    transform: scale(1.1);
-}
-
-.error-message{
+form button:hover,
+.error-message {
     color: red;
     margin: 10px 0;
     font-weight: 600;
     display: none;
 }
 
-.post {
-    padding: 10px;
-    margin-bottom: 30px;
+.container {
+    margin-top: 25px;
+}
+
+.article-card {
+    padding: 10px 10px;
+    margin: 10px 0;
     border: 3px solid black;
     border-radius: 5px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    box-sizing: border-box;
 }
 
-.post h2{
-    margin-bottom: 10px ;
+.article-card h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
-.post .author{
+.article-card p {
+    flex-grow: 1;
+}
+
+.article-card .author {
     margin-top: 15px;
     font-weight: 600;
 }
 
-.post .author span{
+.article-card .author span {
     background: #edd853;
     padding: 2px 7px;
     font-weight: 425;
     border-radius: 5px;
 }
-.post a{
+
+.article-card a {
     text-decoration: none;
-    display: block;
+    display: inline-block;
     margin-top: 20px;
-    width: 50px;
     padding: 10px 20px;
     border-radius: 5px;
     background: #fec008;
     color: #42410c;
-    transition: transition 500ms ease;
+    transition: transform 500ms ease;
+    align-self: flex-start;
 }
 
-.comment{
+.article-card a:hover {
+    transform: scale(1.1);
+}
+
+.comment {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -185,42 +223,47 @@ form button:hover ,
     color: #42410c;
     margin-bottom: 30px;
 }
-.comment h3{
+
+.comment h5 {
     margin-bottom: 20px;
     font-weight: 600;
 }
-.comment .mess_text{
+
+.comment .mess_text {
     margin-top: 10px;
     font-weight: 450;
     padding: 15px;
-    font-size: 20px;
+    font-size: 15px;
     background: #bcd4f8;
-    border:3px solid black;
+    border: 3px solid black;
     border-radius: 5px;
-    height: 70px;
 }
 
-.comment .date{
+.comment .date {
     width: 70px;
     align-self: flex-end;
     margin-right: 20px;
     font-weight: 600;
 }
-.form_message{
+
+.form_message {
     margin-top: 5px;
     margin-bottom: 10px;
 }
-.form_message a{
+
+.form_message a {
     text-decoration: none;
     font-weight: 550;
     color: #222222;
 }
-.comment-fail{
+
+.comment-fail {
     border: 3px solid darkred;
     border-radius: 10px;
     padding: 10px;
 }
-.comment-fail h3{
+
+.comment-fail h3 {
     margin-bottom: 10px;
     font-weight: 300;
     color: darkred;
