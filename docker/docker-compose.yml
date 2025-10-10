@@ -16,12 +16,13 @@ services:
     environment:
       XDEBUG_MODE: debug
       XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
-      SERVER_NAME: simo-blog.test:80
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - .:/app
+      - ..:/app
+      - ./php/Caddyfile:/etc/frankenphp/Caddyfile:ro
+      - ./certs:/app/certs
     tty: true
 
 volumes:

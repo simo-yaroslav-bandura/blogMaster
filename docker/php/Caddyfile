@@ -1,0 +1,19 @@
+{
+    auto_https off
+}
+
+simo-blog.test:443 {
+    tls /app/certs/simo-blog.test.pem /app/certs/simo-blog.test-key.pem
+    root * /app/public
+    encode gzip
+    php_server
+
+    @notFile not file
+    rewrite @notFile /index.php
+
+    file_server
+}
+
+simo-blog.test:80 {
+    redir https://simo-blog.test{uri} permanent
+}
