@@ -171,6 +171,7 @@ form button:hover,
     display: flex;
     flex-direction: column;
     min-height: 300px;
+    width: 300px;
     box-sizing: border-box;
 }
 
