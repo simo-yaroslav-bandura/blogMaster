@@ -1,27 +1,191 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
+    background-color: white; /* Ensure the iframe has a white background */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
+    color: white;
 }
-.calculator {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 300px;
-}
-input, select, button {
-    margin: 5px 0;
-    padding: 10px;
+
+.calculator-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
     width: 100%;
+    max-width: 600px; /* Увеличена ширина */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0.2;
+}
+
+.calculator h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.calculator form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+input, select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 18px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+input:focus, select:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+select {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 8px;
+    border-radius: 8px;
     font-size: 16px;
 }
-.result {
-    margin-top: 10px;
+
+select option {
+    background-color: #000;
+    color: #fff;
+}
+
+button {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
     font-size: 18px;
-    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 6px 15px rgba(37, 117, 252, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 117, 252, 0.6);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.result {
+    margin-top: 25px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.success {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.operation-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.operation-icons span {
+    font-size: 24px;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.operation-icons span:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    select {
+        width: 100%;
+    }
 }

@@ -1,32 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/main1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Minimal Calculator</title>
+    <link rel="stylesheet" href='/assets/css/main1.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-<div class="calculator">
-    <h2>Calculator</h2>
-    <form method="POST">
-        <label>
-            <input type="number" name="a" placeholder="First number" required>
-            <select name="operation">
-                <option value="add">+</option>
-                <option value="subtract">−</option>
-                <option value="multiply">×</option>
-                <option value="divide">÷</option>
-            </select>
-            <input type="number" name="b" placeholder="Second number" required>
-        </label>
-        <button type="submit">Calculate</button>
-    </form>
-    {% if result is not empty %}
-        <div class="result">Result: <strong>{{ result }}</strong></div>
-    {% endif %}
+<div class="calculator-container">
+    <div class="calculator">
+        <h2>✨ Calculator</h2>
+
+        <div class="operation-icons">
+            <span><i class="fas fa-plus"></i></span>
+            <span><i class="fas fa-minus"></i></span>
+            <span><i class="fas fa-times"></i></span>
+            <span><i class="fas fa-divide"></i></span>
+        </div>
+
+        <form method="POST">
+            <div class="input-group">
+                <input type="number" name="a" placeholder="First number" step="any" required>
+                <select name="operation">
+                    <option value="add">+</option>
+                    <option value="subtract">−</option>
+                    <option value="multiply">×</option>
+                    <option value="divide">÷</option>
+                </select>
+                <input type="number" name="b" placeholder="Second number" step="any" required>
+            </div>
+            <button type="submit">
+                <i class="fas fa-calculator"></i> Calculate
+            </button>
+        </form>
+
+        {% if result is defined %}
+            {% if result matches '/Error/' %}
+                <div class="result error">⚠️ {{ result }}</div>
+            {% else %}
+                <div class="result success">✅ Result: {{ result }}</div>
+            {% endif %}
+        {% endif %}
+    </div>
 </div>
+
 </body>
 </html>
+                    

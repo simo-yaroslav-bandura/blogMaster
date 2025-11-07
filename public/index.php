@@ -1,33 +1,35 @@
 <?php
+declare(strict_types=1);
 
-use SimoBanduraYaroslav\Blogmaster\Calculator\Calculator;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Middlewares\FastRoute;
+use Middlewares\RequestHandler;
+use SimoBanduraYaroslav\Blogmaster\Infrastructure\SimpleContainer;
+use function FastRoute\simpleDispatcher;
+use FastRoute\RouteCollector;
+use Laminas\Diactoros\ServerRequestFactory;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+use Middlewares\Utils\Dispatcher;
+use SimoBanduraYaroslav\Blogmaster\Handler\CalculatorHandler;
 
-require_once '../vendor/autoload.php';
-$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals();
-$test = $queryParam = $request->getParsedBody();
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$result = "";
-if ($request->getServerParams()["REQUEST_METHOD"] === "POST") {
-    $a = (float)$test["a"];
-    $b = (float)$test["b"];
-    $operation = $test["operation"];
+$request  = ServerRequestFactory::fromGlobals();
+$router = simpleDispatcher(function(RouteCollector $r) {
+    $r->addRoute(['GET','POST'], '/calculator', CalculatorHandler::class);
+});
 
-    $calc = new Calculator();
+$container = new SimpleContainer();
 
-    $result = $calc->calculate($a, $operation, $b);
+$middlewareQueue = [
+    new FastRoute( $router),
+    new RequestHandler($container),
+];
+$response = (new Dispatcher($middlewareQueue))->dispatch($request);
+
+if ($response->getStatusCode() === 404) {
+    $response = new HtmlResponse('<h1>404-Not found</h1>', 404);;
 }
 
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/Calculator/Templates');
-$twig = new \Twig\Environment($loader, [
-    'cache' => __DIR__ . '/../data/cache',
-    'autoescape' => 'html',
-    'auto_reload' => true,
-]);
-
-echo $twig->render('calculator.twig', [
-    'result' => $result,
-    'a' => $a,
-    'b' => $b,
-    'operation' => $operation,
-]);
-?>
+$emitter = new SapiEmitter();
+$emitter->emit($response);
