@@ -8,7 +8,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use SimoBanduraYaroslav\Blogmaster\Calculator\Calculator;
 use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 
 final class CalculatorHandler implements RequestHandlerInterface
 {

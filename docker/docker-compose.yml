@@ -24,7 +24,6 @@ services:
       - ..:/app
       - ./php/Caddyfile:/etc/frankenphp/Caddyfile:ro
       - ./certs:/app/certs
-    tty: true
 
 volumes:
   db_data:
