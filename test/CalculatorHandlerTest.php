@@ -3,7 +3,6 @@
 namespace SimoBanduraYaroslav\Blogmaster\Handler;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 use Laminas\Diactoros\ServerRequest;
 use SimoBanduraYaroslav\Blogmaster\Calculator\Calculator;
 use Twig\Environment;
@@ -13,23 +12,19 @@ class CalculatorHandlerTest extends TestCase
 {
     public function testHandle()
     {
-        // Создаем мок калькулятора
         $calculator = $this->createMock(Calculator::class);
         $calculator->expects($this->once())
             ->method('calculate')
             ->with(10.0, 'add', 5.0)
             ->willReturn(15.0);
 
-        // Создаем Twig с простым шаблоном
         $loader = new ArrayLoader([
             'calculator.twig' => 'Result: {{ result }}'
         ]);
         $twig = new Environment($loader);
 
-        // Создаем handler
         $handler = new CalculatorHandler($twig, $calculator);
 
-        // Создаем POST запрос с параметрами
         $request = (new ServerRequest())
             ->withMethod('POST')
             ->withParsedBody([
@@ -38,10 +33,8 @@ class CalculatorHandlerTest extends TestCase
                 'operation' => 'add'
             ]);
 
-        // Выполняем запрос
         $response = $handler->handle($request);
 
-        // Проверяем результат
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertStringContainsString('Result: 15', (string)$response->getBody());
     }
@@ -61,7 +54,6 @@ class CalculatorHandlerTest extends TestCase
 
         $handler = new CalculatorHandler($twig, $calculator);
 
-        // GET запрос
         $request = (new ServerRequest())
             ->withMethod('GET')
             ->withQueryParams([

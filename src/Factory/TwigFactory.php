@@ -7,7 +7,7 @@ use Twig\Loader\FilesystemLoader;
 
 class TwigFactory
 {
-    public function __invoke()
+    public function __invoke(): Environment
     {
         $loader = new FilesystemLoader(__DIR__ . '/../Calculator/Templates');
             return new Environment($loader, [

@@ -2,6 +2,9 @@
 
 namespace SimoBanduraYaroslav\Blogmaster\Calculator;
 
+use DivisionByZeroError;
+use InvalidArgumentException;
+
 class Calculator
 {
     private function add(float $a, float $b): float
@@ -19,15 +22,15 @@ class Calculator
         return $a * $b;
     }
 
-    private function divide(float $a, float $b): float|string
+    private function divide(float $a, float $b): float
     {
         if ($b == 0) {
-            return "Error: Division by zero";
+            throw new DivisionByZeroError("Division by zero is not allowed.");
         }
         return $a / $b;
     }
 
-    public function calculate(float $a, string $operation, float $b): float|string
+    public function calculate(float $a, string $operation, float $b): float
     {
         switch ($operation) {
             case 'add':
@@ -42,8 +45,8 @@ class Calculator
             case 'divide':
                 $result = $this->divide($a, $b);
                 break;
-            default:
-                $result = "Error";
+            default;
+            throw new InvalidArgumentException("Invalid operation: {$operation}");
         }
         return $result;
     }
